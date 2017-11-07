@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
 class Results extends Component {
   state = {
@@ -14,11 +14,11 @@ class Results extends Component {
     this.loadResults();
   }
 
-  loadResults = () => {
-    API.getUserSkill(this.props.match.params.skill)
-    .then(res => this.setState({ skills: res.data }))
-    .catch(err => console.log(err));
-  };
+  // loadResults = () => {
+  //   API.getUserSkill(this.props.match.params.skill)
+  //   .then(res => this.setState({ skills: res.data }))
+  //   .catch(err => console.log(err));
+  // };
 
     render() {
       	return (

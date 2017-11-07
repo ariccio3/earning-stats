@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Navbar.css";
+import {Nav, FormGroup, FormControl} from "react-bootstrap";
 
 const placeHolderInput= window.location.href.split("#");
 const queryInput = placeHolderInput[1]
