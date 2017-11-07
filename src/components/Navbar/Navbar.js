@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
-import {Nav, FormGroup, FormControl} from "react-bootstrap";
 
 const placeHolderInput= window.location.href.split("#");
 const queryInput = placeHolderInput[1]
@@ -13,70 +12,60 @@ class Navbar extends Component {
     stock: ""
   };
 
- 	handleInputChange = event => {
-	  	// Getting the value and name of the input which triggered the change
-	    let value = event.target.value;
-	    const name = event.target.name;
+  handleInputChange = event => {
+    // Getting the value and name of the input which triggered the change
+    let value = event.target.value;
+    const name = event.target.name;
 
-	    // Updating the input's state
-	    this.setState({
-	      [name]: value
-	    });
-  	};
+    // Updating the input's state
+    this.setState({
+      [name]: value
+    });
+  };
 
- 	handleFormSubmit = event => {
- 	 // Preventing the default behavior of the form submit (which is to refresh the page)
-	event.preventDefault();
+  handleFormSubmit = event => {
+    // Preventing the default behavior of the form submit (which is to refresh the page)
+    event.preventDefault();
 
-	};
+ if(queryInput) {
+    window.location.href = "/results/" + this.state.stock + "/#" +  queryInput
+    }
+
+    if (!this.state.stock) {
+      alert("Please enter a stock you'd like to search for");
+    } else {
+
+      this.setState({
+        stock: ""    
+      });
+    }
+  };
 
   render() {
     return (
-    	<Navbar>
-    		<Navbar.Header>
-      			<Navbar.Brand>
-        			<a href="/">EarningStats</a>
-      			</Navbar.Brand>
-    		</Navbar.Header>
-      	<Nav>
-          <FormGroup controlId="formControlsSelect">
-            <FormControl componentClass="select">
-              <option value="" selected>Select a Stock</option>
-              <option value="AAPL">AAPL</option>
-              <option value="AMGN">AMGN</option>
-              <option value="AMZN">AMZN</option>
-              <option value="BA">BA</option>
-              <option value="BABA">BABA</option>
-              <option value="BIDU">BIDU</option>
-              <option value="CAT">CAT</option>
-              <option value="CELG">CELG</option>
-              <option value="CMG">CMG</option>
-              <option value="COST">COST</option>
-              <option value="DIS">DIS</option>
-              <option value="FB">FB</option>
-              <option value="FDX">FDX</option>
-              <option value="GILD">GILD</option>
-              <option value="GOOG">GOOG</option>
-              <option value="GS">GS</option>
-              <option value="HD">HD</option>
-              <option value="IBM">IBM</option>
-              <option value="LULU">LULU</option>
-              <option value="MCD">MCD</option>
-              <option value="NFLX">NFLX</option>
-              <option value="NKE">NKE</option>
-              <option value="NTES">NTES</option>
-              <option value="NVDA">NVDA</option>
-              <option value="PCLN">PCLN</option>
-              <option value="PEP">PEP</option>
-              <option value="STZ">STZ</option>
-              <option value="TGT">TGT</option>
-              <option value="TSLA">TSLA</option>
-              <option value="UPS">UPS</option>
-              <option value=""></option>
-            </FormControl>
-          </FormGroup>
-        </Nav>
-      </Navbar>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light navbar-fixed">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <Link className="navbar-brand" to="/">
+              <strong>EarningStats</strong>
+            </Link>
+          </div>
+          <form className="navbar-form navbar-left">
+              <input
+                className="form-control"
+                value={this.state.stock}
+                name="stock"
+                onChange={this.handleInputChange}
+                type="text"
+                placeholder="Search for a Stock"
+              />
+           
+               <button 
+                  className="btn btn-secondary my-2 my-sm-0" 
+                  onClick={this.handleFormSubmit}><i className="fa fa-search" aria-hidden="true"></i></button>
+          </form>
+        </div>
+      </nav>
     )
   }
 }

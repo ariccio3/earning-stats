@@ -1,6 +1,7 @@
+* {
+	border: solid red 1px;
+}
+
 .navbar-fixed {
     height: 30px;
-}
-.navbar {
-    border-bottom: 1px solid black;
 }

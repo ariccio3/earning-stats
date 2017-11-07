@@ -5,13 +5,13 @@ import './App.css';
 import Home from "./pages/Home";
 import Results from "./pages/Results";
 import NoMatch from "./pages/NoMatch";
-import Navbar from "./components/Navbar";
+import NavBar from "./components/Navbar";
 
 
 const App = () =>
   <Router>
     <div>
-      <Navbar />
+      <NavBar />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/results/:stock" component={Results} />
