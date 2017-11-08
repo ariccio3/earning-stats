@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-// import API from "../../utils/API";
+import API from "../../utils/API";
 
 class Results extends Component {
   state = {
-    skills: []
+    stocks: []
   };
 
   componentDidMount() {
@@ -14,11 +14,11 @@ class Results extends Component {
     this.loadResults();
   }
 
-  // loadResults = () => {
-  //   API.getUserSkill(this.props.match.params.skill)
-  //   .then(res => this.setState({ skills: res.data }))
-  //   .catch(err => console.log(err));
-  // };
+  loadResults = () => {
+    API.getStock(this.props.match.params.stock)
+    .then(res => this.setState({ stocks: res.data }))
+    .catch(err => console.log(err));
+  };
 
     render() {
       	return (
