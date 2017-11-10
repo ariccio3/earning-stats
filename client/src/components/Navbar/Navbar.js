@@ -9,7 +9,7 @@ console.log(queryInput)
 class Navbar extends Component {
   // Setting the component's initial state
   state = {
-    stock: ""
+    stocks: ""
   };
 
   handleInputChange = event => {
@@ -26,17 +26,17 @@ class Navbar extends Component {
   handleFormSubmit = event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
-
+console.log(queryInput);
  if(queryInput) {
-    window.location.href = "/results/" + this.state.stock + "/#" +  queryInput
+    window.location.href = "/results/" + this.state.stocks + "/#" +  queryInput
     }
-
-    if (!this.state.stock) {
+console.log(window.location.href);
+    if (!this.state.stocks) {
       alert("Please enter a stock you'd like to search for");
     } else {
 
       this.setState({
-        stock: ""    
+        stocks: ""    
       });
     }
   };
@@ -53,8 +53,8 @@ class Navbar extends Component {
           <form className="navbar-form navbar-left">
               <input
                 className="form-control"
-                value={this.state.stock}
-                name="stock"
+                value={this.state.stocks}
+                name="stocks"
                 onChange={this.handleInputChange}
                 type="text"
                 placeholder="Search for a Stock"

@@ -11,7 +11,7 @@ module.exports = {
 
 	findAll: function(req, res) {
 		db.Stocks
-		.find({stock:req.params.stock })
+		.find({stocks:req.params.stock})
 	      .then(dbModel => res.json(dbModel))
 	      .catch(err => res.status(422).json(err));
 	}
